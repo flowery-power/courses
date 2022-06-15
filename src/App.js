@@ -19,14 +19,10 @@ function App() {
           data-aos-delay="100"
         >
           <h1>
-            Learning Today,
+            Learn English faster
             <br />
-            Leading Tomorrow
           </h1>
-          <h2>
-            Learn English faster with The world's number one online English
-            school.
-          </h2>
+          <h2>with the world's number one online English school.</h2>
           <a href="courses.html" className="btn-get-started">
             Get Started
           </a>
