@@ -50,7 +50,7 @@ function Courses() {
           <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div className="course-item">
               <img
-                src="assets/img/course-details.jpg"
+                src="assets/img/events-2.jpg"
                 className="img-fluid"
                 alt="..."
               />
