@@ -1,0 +1,21 @@
+[debug] [2022-07-12T18:32:04.338Z] ----------------------------------------------------------------------
+[debug] [2022-07-12T18:32:04.340Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Flowery\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-07-12T18:32:04.340Z] CLI Version:   11.2.1
+[debug] [2022-07-12T18:32:04.340Z] Platform:      win32
+[debug] [2022-07-12T18:32:04.341Z] Node Version:  v16.15.0
+[debug] [2022-07-12T18:32:04.341Z] Time:          Tue Jul 12 2022 21:32:04 GMT+0300 (Eastern European Summer Time)
+[debug] [2022-07-12T18:32:04.342Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-07-12T18:32:04.348Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-07-12T18:32:04.349Z] > authorizing via signed-in user (gabrovska.tsvetelina@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Flowery\Desktop\React Project\courses
+
