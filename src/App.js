@@ -3,7 +3,7 @@ import Courses from "./components/Courses";
 import Header from "./components/Header";
 import Register from "./components/Register";
 import Home from "./components/Home";
-import CreateCourse from "./components/courses-list/course-create";
+import CreateCourse from "./components/courses-list/CreateCourse";
 import FindYourCourse from "./components/FindYourCourse";
 import Login from "./components/Login";
 import Footer from "./components/Footer/Footer.js";

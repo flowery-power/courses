@@ -10,8 +10,7 @@ function Home({ isAuth }) {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    const getCourses = async () => {
-      const coursesSnapshot = await getDocs(collection(db, "courses"));
+    getDocs(collection(db, "courses")).then((coursesSnapshot) => {
       setCourses(
         coursesSnapshot.docs
           .map((doc) => ({
@@ -20,9 +19,7 @@ function Home({ isAuth }) {
           }))
           .slice(0, 3)
       );
-    };
-
-    getCourses();
+    });
   }, []);
 
   // const [postLists, setPostList] = useState([]);
