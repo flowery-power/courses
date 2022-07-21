@@ -1,20 +1,28 @@
 import React from "react";
 import Courses from "./components/Courses";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Register from "./components/Register";
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import CreateCourse from "./components/courses-list/course-create";
+import FindYourCourse from "./components/FindYourCourse";
+import Login from "./components/Login";
+import Footer from "./components/Footer/Footer.js";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
+    <div>
       <Routes>
-        <Route path="/register" exact component={<Register />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/createCourse" element={<CreateCourse />} />
+        <Route path="/findYourCourse" element={<FindYourCourse />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <div>
         <Header />
-
+        {/* 
         <section
           id="hero"
           className="d-flex justify-content-center align-items-center"
@@ -29,13 +37,10 @@ function App() {
               <br />
             </h1>
             <h2>with the world's number one online courses.</h2>
-            <a href="courses.html" className="btn-get-started">
-              Get Started
-            </a>
           </div>
-        </section>
+        </section> */}
 
-        <main id="main">
+        {/* <main id="main">
           <section id="about" className="about">
             <div className="container" data-aos="fade-up">
               <div className="row">
@@ -83,19 +88,19 @@ function App() {
           </section>
 
           <Courses />
-        </main>
+        </main> */}
 
-        <Footer />
+        {/* <Footer /> */}
 
         {/* <div id="preloader"></div> */}
-        <a
+        {/* <a
           href="#"
           className="back-to-top d-flex align-items-center justify-content-center"
         >
           <i className="bi bi-arrow-up-short"></i>
-        </a>
+        </a> */}
       </div>
-    </Router>
+    </div>
   );
 }
 

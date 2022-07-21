@@ -9,9 +9,9 @@ function Footer() {
             <div className="col-lg-3 col-md-6 footer-contact">
               <h3>Betterdegree</h3>
               <p>
-                <strong>Phone:</strong> +1 5589 55488 55
+                <strong>Phone:</strong> +359 888 554 855
                 <br />
-                <strong>Email:</strong> english@prodigy.com
+                <strong>Email:</strong> course@prodigy.com
                 <br />
               </p>
             </div>
