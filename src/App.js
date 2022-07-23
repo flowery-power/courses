@@ -5,7 +5,7 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import CreateCourse from "./components/courses-list/CreateCourse";
 import FindYourCourse from "./components/FindYourCourse";
-import Login from "./components/Login";
+import SignIn from "./components/SignIn";
 import Footer from "./components/Footer/Footer.js";
 import { Route, Routes } from "react-router-dom";
 
@@ -18,7 +18,7 @@ function App() {
         <Route path="/createCourse" element={<CreateCourse />} />
         <Route path="/findYourCourse" element={<FindYourCourse />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<SignIn />} />
       </Routes>
       <div>
         <Header />

@@ -1,14 +1,15 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase-config";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
+  let navigate = useNavigate();
 
   const onRegisterFormSubmitHandler = ({ email, password, repeatPassword }) => {
     if (password !== repeatPassword) {
@@ -19,7 +20,7 @@ function Register() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // ...
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -29,8 +30,11 @@ function Register() {
   };
 
   return (
-    <section className="register">
-      <form onSubmit={onRegisterFormSubmitHandler}>
+    <section className="contact">
+      <form
+        className="php-email-form"
+        onSubmit={handleSubmit(onRegisterFormSubmitHandler)}
+      >
         <fieldset>
           <legend>Register</legend>
           <p className="field">
@@ -41,7 +45,6 @@ function Register() {
                 type="text"
                 name="email"
                 id="email"
-                placeholder="Email"
               />
               <span className="actions"></span>
               <i className="fas fa-user"></i>
@@ -49,27 +52,25 @@ function Register() {
           </p>
           <p className="field">
             <label htmlFor="password">Password</label>
-            <span className="input" {...register("password")}>
+            <span className="input">
               <input
+                {...register("password")}
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Password"
               />
               <span className="actions"></span>
               <i className="fas fa-key"></i>
             </span>
           </p>
           <p className="field">
-            <label htmlFor="repeat-password" {...register("repeatPassword")}>
-              Password
-            </label>
+            <label htmlFor="repeatPassword">Password</label>
             <span className="input">
               <input
+                {...register("repeatPassword")}
                 type="password"
-                name="password"
-                id="repeat-password"
-                placeholder="Password"
+                name="repeatPassword"
+                id="repeatPassword"
               />
               <span className="actions"></span>
               <i className="fas fa-key"></i>

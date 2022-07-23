@@ -17,12 +17,12 @@ function Courses({ courses }) {
                 <img src={course.img} className="img-fluid" alt="..." />
                 <div className="course-content">
                   <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h4>{course.title}</h4>
+                    <h4>{course.type}</h4>
                     <p className="price">${course.price}</p>
                   </div>
 
                   <h3>
-                    <a href="course-details.html">{course.details}</a>
+                    <a href="course-details.html">{course.title}</a>
                   </h3>
                   <p>{course.details}</p>
                 </div>
