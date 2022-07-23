@@ -1,10 +1,9 @@
 import React from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = ({ history }) => {
   let navigate = useNavigate();
-  const auth = getAuth();
 
   const onLoginFormSubmitHandler = (e) => {
     e.preventDefault();

@@ -6,8 +6,9 @@ import Home from "./components/Home";
 import CreateCourse from "./components/courses-list/CreateCourse";
 import FindYourCourse from "./components/FindYourCourse";
 import SignIn from "./components/SignIn";
-import Footer from "./components/Footer/Footer.js";
 import { Route, Routes } from "react-router-dom";
+import { auth } from "../firebase-config";
+import { signOut } from "firebase/auth";
 
 function App() {
   return (
@@ -19,6 +20,14 @@ function App() {
         <Route path="/findYourCourse" element={<FindYourCourse />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/login" element={<SignIn />} />
+        <Route
+          path="/logout"
+          render={() => {
+            signOut(auth).then(() => {
+              return <Redirect to="/" />;
+            });
+          }}
+        />
       </Routes>
       <div>
         <Header />
