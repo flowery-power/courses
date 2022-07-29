@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import uniqid from "uniqid";
 
-function CreateCourse({ isAuth }) {
+function CourseCreate({ isAuth }) {
   const [courses, setCourses] = useState("");
 
   const coursesCollectionRef = collection(db, "courses");
@@ -104,4 +104,4 @@ function CreateCourse({ isAuth }) {
   );
 }
 
-export default CreateCourse;
+export default CourseCreate;

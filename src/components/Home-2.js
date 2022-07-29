@@ -1,6 +1,6 @@
-import Courses from "./Courses";
+import Courses from "./Courses/Courses";
 import Footer from "./Footer/Footer";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 function Home() {
   return (

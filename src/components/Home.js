@@ -1,13 +1,18 @@
-import Courses from "./Courses";
+import Courses from "./Courses/Courses";
 import Footer from "./Footer/Footer";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 import React, { useEffect, useState } from "react";
-import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
-import { auth, db } from "../firebase-config";
+import { getDocs, collection } from "firebase/firestore";
+import { db, auth } from "../firebase-config";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 
-function Home({ isAuth }) {
+function Home() {
+  let navigate = useNavigate();
+
   const [courses, setCourses] = useState([]);
+  const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
     getDocs(collection(db, "courses")).then((coursesSnapshot) => {
@@ -20,7 +25,10 @@ function Home({ isAuth }) {
           .slice(0, 3)
       );
     });
-  }, []);
+
+    if (loading) return;
+    if (!user) return navigate("/");
+  }, [user, loading]);
 
   // const [postLists, setPostList] = useState([]);
   // const postsCollectionRef = collection(db, "posts");
@@ -40,7 +48,7 @@ function Home({ isAuth }) {
   // };
   return (
     <div>
-      <Header />
+      <Header user={user} />
 
       <section
         id="hero"

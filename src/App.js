@@ -1,14 +1,15 @@
 import React from "react";
-import Courses from "./components/Courses";
-import Header from "./components/Header";
-import Register from "./components/Register";
+import Courses from "./components/Courses/Courses";
+import Header from "./components/Header/Header";
+import Register from "./components/Register/Register";
+import AllCourses from "./components/AllCourses/AllCourses";
 import Home from "./components/Home";
-import CreateCourse from "./components/courses-list/CreateCourse";
 import FindYourCourse from "./components/FindYourCourse";
-import SignIn from "./components/SignIn";
-import { Route, Routes } from "react-router-dom";
-import { auth } from "../firebase-config";
+import SignIn from "./components/SignIn/SignIn";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { auth } from "./firebase-config";
 import { signOut } from "firebase/auth";
+import CourseCreate from "./components/CourseCreate/CourseCreate";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/createCourse" element={<CreateCourse />} />
+        <Route path="/all-courses" element={<AllCourses />} />
+        <Route path="/createCourse" element={<CourseCreate />} />
         <Route path="/findYourCourse" element={<FindYourCourse />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/login" element={<SignIn />} />
@@ -24,7 +26,7 @@ function App() {
           path="/logout"
           render={() => {
             signOut(auth).then(() => {
-              return <Redirect to="/" />;
+              return <Navigate to="/" />;
             });
           }}
         />
