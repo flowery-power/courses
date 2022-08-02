@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Courses from "../Courses/Courses";
 import { getDocs, collection } from "firebase/firestore";
-import { auth, db } from "../../firebase-config";
+import { db } from "../../firebase-config";
 
 export default function AllCourses() {
   const [courses, setCourses] = useState([]);

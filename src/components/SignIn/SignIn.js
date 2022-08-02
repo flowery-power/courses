@@ -61,46 +61,6 @@ const SignIn = () => {
         </div>
       </div>
     </section>
-
-    // <section className="contact">
-    //   <form
-    //     className="php-email-form"
-    //     onSubmit={handleSubmit(onLoginFormSubmitHandler)}
-    //   >
-    //     <fieldset>
-    //       <legend>Sign In</legend>
-    //       <p className="field">
-    //         <label htmlFor="email">Email</label>
-    //         <span className="input">
-    //           <input
-    //             {...register("email", { required: true })}
-    //             type="text"
-    //             name="email"
-    //             id="email"
-    //             placeholder="Email"
-    //           />
-    //           <span className="actions"></span>
-    //           <i className="fas fa-user"></i>
-    //         </span>
-    //       </p>
-    //       <p className="field">
-    //         <label htmlFor="password">Password</label>
-    //         <span className="input">
-    //           <input
-    //             {...register("password", { required: true })}
-    //             type="password"
-    //             name="password"
-    //             id="password"
-    //             placeholder="Password"
-    //           />
-    //           <span className="actions"></span>
-    //           <i className="fas fa-key"></i>
-    //         </span>
-    //       </p>
-    //       <input className="button submit" type="submit" value="Login" />
-    //     </fieldset>
-    //   </form>
-    // </section>
   );
 };
 

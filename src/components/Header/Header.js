@@ -1,7 +1,15 @@
 import { NavLink, Link } from "react-router-dom";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Nav from "react-bootstrap/Nav";
+import { useEffect, useContext } from "react";
 
-function Header({ user }) {
+import AuthContext from "../../contexts/AuthContext";
+
+function Header() {
   let activeClassName = "active";
+  const { isAuthenticated, email } = useContext(AuthContext);
+
+  let logout = () => {};
 
   let guestNavigation = (
     <>
@@ -26,13 +34,12 @@ function Header({ user }) {
 
   let userNavigation = (
     <>
-      <span>Welcome, {user?.email}</span>
       <li>
         <NavLink
           to="findYourCourse"
           className={({ isActive }) => (isActive ? activeClassName : undefined)}
         >
-          Find Your Course
+          Events
         </NavLink>
       </li>
       <li>
@@ -58,20 +65,30 @@ function Header({ user }) {
         </a>
 
         <nav id="navbar" className="navbar order-last order-lg-0">
-          <ul>{user ? userNavigation : guestNavigation}</ul>
+          <ul>{isAuthenticated ? userNavigation : guestNavigation}</ul>
 
           <i className="bi bi-list mobile-nav-toggle"></i>
         </nav>
 
-        {!user && (
+        {!isAuthenticated && (
           <Link to="register" className="get-started-btn">
-            Register for free
+            Register
           </Link>
         )}
 
         {/* <a href="courses.html" className="get-started-btn">
           Register for free
         </a> */}
+
+        <Nav>
+          <NavDropdown title={email}>
+            <NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/logout">
+                logout
+              </NavDropdown.Item>
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
       </div>
     </header>
   );
