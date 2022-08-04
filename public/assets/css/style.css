@@ -8,10 +8,18 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&family=Nuosu+SIL&family=Padauk&family=Raleway:wght@800&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&family=Nuosu+SIL&family=Padauk&family=Raleway:wght@800&display=swap");
+
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
   color: #444444;
+  font-weight: bold;
 }
+/* "Open Sans", sans-serif; */
+
+/* font-family: 'Raleway', sans-serif; */
 
 a {
   color: #5fcf80;
@@ -139,7 +147,7 @@ h6 {
   font-family: "Nuosu SIL", serif;
 }
 #header .logo a {
-  color: #5928e5;
+  color: #5c90e7;
 }
 #header .logo img {
   max-height: 40px;
@@ -150,7 +158,7 @@ h6 {
 */
 .get-started-btn {
   margin-left: 22px;
-  background: #5928e5;
+  background: #5c90e7;
   color: #fff;
   border-radius: 50px;
   padding: 8px 25px;
@@ -160,7 +168,7 @@ h6 {
   display: inline-block;
 }
 .get-started-btn:hover {
-  background: #66ff00;
+  background: #5c90e7;
   /* #3ee528; */
   /* #3ac162; */
   color: #fff;
@@ -214,7 +222,7 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover > a {
-  color: #5928e5;
+  color: #0d6efd;
 }
 .navbar .dropdown ul {
   display: block;
@@ -477,7 +485,7 @@ section {
   width: 120px;
   height: 1px;
   display: inline-block;
-  background: #9ae1af;
+  background: #0d6efd;
   margin: 4px 10px;
 }
 .section-title p {
@@ -486,14 +494,14 @@ section {
   font-size: 36px;
   font-weight: 700;
   text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
   color: #37423b;
 }
 
 .breadcrumbs {
   margin-top: 73px;
   text-align: center;
-  background: #5fcf80;
+  background: #0d6efd;
   padding: 30px 0;
   color: #fff;
 }
@@ -685,7 +693,7 @@ section {
   transition: 0.3s;
 }
 .courses .course-content h3 a:hover {
-  color: #5fcf80;
+  color: #0d6efd;
 }
 .courses .course-content p {
   font-size: 14px;
@@ -693,7 +701,7 @@ section {
 }
 .courses .course-content h4 {
   font-size: 14px;
-  background: #66ff00;
+  background: #0d6efd;
   padding: 7px 14px;
   color: #fff;
   margin: 0;
@@ -884,7 +892,7 @@ section {
   display: block;
   width: 60px;
   height: 1px;
-  background: #5fcf80;
+  background: #0d6efd;
   bottom: 0;
   left: 0;
 }
@@ -897,7 +905,7 @@ section {
   font-weight: 400;
   font-size: 16px;
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 .course-details .course-info p {
   margin: 0;
@@ -1010,16 +1018,16 @@ section {
   transition: 0.3s;
 }
 .events .read-more a:hover {
-  color: #5fcf80;
+  color: #0d6efd;
 }
 .events .card:hover img {
   transform: scale(1.1);
 }
 .events .card:hover .card-body {
-  border-color: #5fcf80;
+  border-color: #0d6efd;
 }
 .events .card:hover .card-body .card-title a {
-  color: #5fcf80;
+  color: #0d6efd;
 }
 
 /*--------------------------------------------------------------
@@ -1300,27 +1308,27 @@ section {
 }
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #5fcf80;
+  color: #0d6efd;
   font-size: 18px;
   line-height: 1;
 }
 #footer .footer-top .footer-links ul li {
   padding: 10px 0;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
 }
-#footer .footer-top .footer-links ul li:first-child {
-  padding-top: 0;
-}
+
 #footer .footer-top .footer-links ul a {
   color: #777777;
   transition: 0.3s;
   display: inline-block;
+  align-items: center;
+
   line-height: 1;
 }
 #footer .footer-top .footer-links ul a:hover {
   text-decoration: none;
-  color: #5fcf80;
+  color: #0d6efd;
 }
 #footer .footer-newsletter {
   font-size: 15px;
@@ -1355,23 +1363,53 @@ section {
   background: none;
   font-size: 16px;
   padding: 0 20px 2px 20px;
-  background: #5fcf80;
+  background: #0d6efd;
   color: #fff;
   transition: 0.3s;
   border-radius: 50px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
-#footer .footer-newsletter form input[type="submit"]:hover {
-  background: #3ac162;
+/* #footer .footer-newsletter form input[type="submit"]:hover {
+  background: #0d6efd;
 }
 #footer .credits {
   padding-top: 5px;
   font-size: 13px;
 }
 #footer .credits a {
-  color: #3ac162;
+  color: #0d6efd;
   transition: 0.3s;
 }
 #footer .credits a:hover {
-  color: #5fcf80;
+  color: #0d6efd;
+} */
+
+.myButton {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  background-color: #ffffff;
+  border-radius: 7px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 25px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+}
+.myButton:hover {
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+
+create-comment {
+  width: 300px;
+  height: 150px;
 }

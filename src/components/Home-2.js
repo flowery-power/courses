@@ -146,7 +146,7 @@ function Home() {
         <Courses />
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
 
       <div id="preloader"></div>
       <a

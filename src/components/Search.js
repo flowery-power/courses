@@ -39,10 +39,7 @@ export const Search = () => {
         <span>Search Criteria:</span>
         <select name="criteria" className="criteria">
           <option>Not selected</option>
-          <option>First Name</option>
-          <option>Last Name</option>
-          <option>Email</option>
-          <option>Phone</option>
+          <option>title</option>
         </select>
       </div>
     </form>

@@ -66,7 +66,7 @@ function Register() {
             <div className="col-md-6 form-group mt-3">
               <input
                 {...register("repeatPassword", { required: true })}
-                type="text"
+                type="password"
                 className="form-control"
                 name="repeatPassword"
                 id="repeatPassword"

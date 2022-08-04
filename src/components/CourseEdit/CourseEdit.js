@@ -1,112 +1,137 @@
-export const CourseEdit = ({ course, onClose }) => {
+import { useEffect, useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
+import * as coursesService from "../../services/coursesService";
+import AuthContext from "../../contexts/AuthContext";
+
+export const CourseEdit = () => {
+  const [course, setCourse] = useState({});
+  const { courseId } = useParams();
+  const { isAuthenticated, email } = useContext(AuthContext);
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, []);
+
+  useEffect(() => {
+    coursesService.getOne(courseId).then((courseData) => {
+      setCourse(courseData);
+    });
+  }, []);
+
+  useEffect(() => {
+    reset(course);
+  }, [course]);
+
+  const onSubmit = (courseData) => {
+    coursesService.edit(courseId, courseData).then((result) => {
+      setCourse(courseId, result);
+      navigate(`/courses/details/${courseId}`);
+    });
+  };
   return (
-    <div className="overlay">
-      <div className="backdrop" onClick={onClose}></div>
-      <div className="modal">
-        <div className="user-container">
-          <header className="headers">
-            <h2>Edit Course</h2>
-            <button className="btn close" onClick={onClose}>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="xmark"
-                className="svg-inline--fa fa-xmark"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
-                ></path>
-              </svg>
-            </button>
-          </header>
-          <form>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="firstName">Course name</label>
-                <div className="input-wrapper">
-                  <span>
-                    <i className="fa-solid fa-user"></i>
-                  </span>
+    <>
+      <section id="contact" className="contact">
+        <div className="col-lg-8 mt-5 mt-lg-0">
+          <form className="php-email-form" onSubmit={handleSubmit(onSubmit)}>
+            <div className="row justify-content-center">
+              <div className="col-md-6 form-group mt-3">
+                <input
+                  {...register("title")}
+                  type="text"
+                  className="form-control"
+                  id="title"
+                  name="title"
+                />
+              </div>
+            </div>
+            <div className="row justify-content-center">
+              <div className="col-md-6 form-group mt-3">
+                <input
+                  {...register("price")}
+                  type="text"
+                  className="form-control"
+                  id="price"
+                  name="price"
+                />
+              </div>
+            </div>
+            <div className="row justify-content-center">
+              <div className="col-md-6 form-group mt-3">
+                <input
+                  {...register("img")}
+                  type="text"
+                  className="form-control"
+                  id="imageUrl"
+                  name="imageUrl"
+                />
+              </div>
+            </div>
+
+            <div className="row justify-content-center">
+              <div className="col-md-6 form-group mt-3">
+                <input
+                  {...register("details")}
+                  type="text"
+                  className="form-control"
+                  id="details"
+                  name="details"
+                />
+              </div>
+
+              <div className="row justify-content-center">
+                <div className="col-md-6 form-group mt-3">
                   <input
-                    id="firstName"
-                    name="firstName"
+                    {...register("startdate")}
                     type="text"
-                    defaultValue={course.title}
+                    className="form-control"
+                    id="stardate"
+                    name="stardate"
                   />
                 </div>
-                <p className="form-error">
-                  First name should be at least 5 characters long!
-                </p>
               </div>
-            </div>
 
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="price">Price</label>
-                <div className="input-wrapper">
-                  <span>
-                    <i className="fa-solid fa-envelope"></i>
-                  </span>
-                  <input id="price" name="price" type="text" />
+              <div className="row justify-content-center">
+                <div className="col-md-6 form-group mt-3">
+                  <input
+                    {...register("duration")}
+                    type="text"
+                    className="form-control"
+                    id="duration"
+                    name="duration"
+                  />
                 </div>
-                <p className="form-error">Price</p>
+              </div>
+
+              <div className="row justify-content-center">
+                <div className="col-md-6 form-group mt-3">
+                  <input
+                    {...register("type")}
+                    type="text"
+                    className="form-control"
+                    id="type"
+                    name="type"
+                  />
+                </div>
               </div>
             </div>
-
-            <div className="form-group long-line">
-              <label htmlFor="imageUrl">img</label>
-              <div className="input-wrapper">
-                <span>
-                  <i className="fa-solid fa-image"></i>
-                </span>
-                <input id="imageUrl" name="imageUrl" type="text" />
-              </div>
-              <p className="form-error">ImageUrl is not valid!</p>
-            </div>
-
-            <div className="form-group long-line">
-              <label htmlFor="imageUrl">duration</label>
-              <div className="input-wrapper">
-                <span>
-                  <i className="fa-solid fa-image"></i>
-                </span>
-                <input id="duration" name="duration" type="text" />
-              </div>
-              <p className="form-error">Duration is not valid!</p>
-            </div>
-
-            <div className="form-group long-line">
-              <label htmlFor="startdate">duration</label>
-              <div className="input-wrapper">
-                <span>
-                  <i className="fa-solid fa-image"></i>
-                </span>
-                <input id="startdate" name="startdate" type="text" />
-              </div>
-              <p className="form-error">Start date is not valid!</p>
-            </div>
-
-            <div id="form-actions">
-              <button id="action-save" className="btn" type="submit">
-                Edit
-              </button>
-              <button
-                id="action-cancel"
-                className="btn"
-                type="button"
-                onClick={onClose}
-              >
-                Cancel
-              </button>
+            <div className="text-center">
+              <button type="submit">Edit</button>
             </div>
           </form>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };

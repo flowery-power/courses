@@ -1,4 +1,4 @@
-import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import { doc, getDoc, deleteDoc, updateDoc } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
 
 import { createContext } from "react";
@@ -29,17 +29,7 @@ export const getOne = async (courseId) => {
 };
 
 export const remove = (courseId) => {
-  deleteDoc(doc(db, "courses", courseId));
-
-  //   db.collection("courses")
-  //     .doc(courseId)
-  //     .delete()
-  //     .then(() => {
-  //       console.log("Document successfully deleted!");
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error removing document: ", error);
-  //     });
+  return deleteDoc(doc(db, "courses", courseId));
 };
 // export const create = (petName, description, imageURL, category) => {
 //   let pet = {
@@ -59,15 +49,8 @@ export const remove = (courseId) => {
 //   });
 // };
 
-// export const update = (petId, pet) => {
-//   return fetch(`${url}/${petId}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(pet),
-//   });
-// };
+export const edit = (courseId, courseData) =>
+  updateDoc(doc(db, "courses", courseId), courseData);
 
 // export const pet = (petId, likes) => {
 //   return fetch(`${url}/${petId}`, {

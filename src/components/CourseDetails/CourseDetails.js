@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as coursesService from "../../services/coursesService";
-import { useParams } from "react-router-dom";
 
 export default function CourseDetails() {
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ export default function CourseDetails() {
   useEffect(() => {
     coursesService.getOne(courseId).then((res) => {
       setCourse(res);
-      console.log(res);
     });
   }, []);
 
@@ -28,7 +26,7 @@ export default function CourseDetails() {
 
     if (confirmation) {
       coursesService.remove(courseId).then(() => {
-        navigate("/courses");
+        navigate("/all-courses");
       });
     }
   };
@@ -93,11 +91,7 @@ export default function CourseDetails() {
       <div className="breadcrumbs" data-aos="fade-in">
         <div className="container">
           <h2>Details</h2>
-          <p>
-            Est dolorum ut non facere possimus quibusdam eligendi voluptatem.
-            Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis
-            ipsam aperiam consequatur laboriosam nemo harum praesentium.{" "}
-          </p>
+          <p></p>
         </div>
       </div>
 
@@ -112,9 +106,7 @@ export default function CourseDetails() {
             <div className="col-lg-4">
               <div className="course-info d-flex justify-content-between align-items-center">
                 <h5>Categoty</h5>
-                <p>
-                  <a href="#">{course.category}</a>
-                </p>
+                <p>{course.type}</p>
               </div>
 
               <div className="course-info d-flex justify-content-between align-items-center">
@@ -124,7 +116,7 @@ export default function CourseDetails() {
 
               <div className="course-info d-flex justify-content-between align-items-center">
                 <h5>Start Date</h5>
-                <p>{course.startDate}</p>
+                <p>{course.startdate}</p>
               </div>
 
               <div className="course-info d-flex justify-content-between align-items-center">
@@ -146,17 +138,19 @@ export default function CourseDetails() {
                   <div className="row">
                     <div className="col-lg-8 details order-2 order-lg-1"></div>
                     <div className="col-lg-4 text-center order-1 order-lg-2">
-                      <img src={course.img} alt="" className="img-fluid" />
+                      <img src="" alt="" className="img-fluid" />
                     </div>
                     <div>
                       <div className="buttons">
-                        {" "}
-                        <Link to={`/courses/details/${course.id}/edit`}>
-                          <button className="button">Edit</button>{" "}
-                        </Link>{" "}
+                        <Link
+                          to={`/courses/${courseId}/edit`}
+                          className="myButton"
+                        >
+                          Edit
+                        </Link>
                         <Link to="#">
                           {" "}
-                          <button onClick={handleDel} className="button">
+                          <button onClick={handleDel} className="myButton">
                             Delete{" "}
                           </button>{" "}
                         </Link>{" "}
@@ -170,7 +164,7 @@ export default function CourseDetails() {
                             placeholder="Comment......"
                           ></textarea>{" "}
                           <input
-                            className="btn submit"
+                            className="myButton"
                             type="submit"
                             value="Add Comment"
                           />{" "}

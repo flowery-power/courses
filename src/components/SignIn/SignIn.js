@@ -19,7 +19,7 @@ const SignIn = () => {
   };
 
   return (
-    <section id="contact" class="contact">
+    <section id="contact" className="contact">
       <div className="container" data-aos="fade-up">
         <div className="col-lg-8 mt-5 mt-lg-0">
           <form
@@ -45,7 +45,7 @@ const SignIn = () => {
                 <input
                   {...register("password", { required: true })}
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   name="password"
                   id="password"
                   placeholder="Your Password"

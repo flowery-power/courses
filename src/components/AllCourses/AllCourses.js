@@ -19,6 +19,12 @@ export default function AllCourses() {
 
   return (
     <div>
+      <div className="breadcrumbs">
+        <div className="container">
+          <h2>Courses</h2>
+          <p></p>
+        </div>
+      </div>
       <Courses courses={courses} />
     </div>
   );
