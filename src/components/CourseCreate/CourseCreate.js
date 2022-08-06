@@ -10,7 +10,7 @@ import uniqid from "uniqid";
 
 function CourseCreate() {
   const [courses, setCourses] = useState("");
-  const { isAuthenticated, email } = useContext(AuthContext);
+  const { isAuthenticated, email, id } = useContext(AuthContext);
 
   const {
     register,
@@ -33,6 +33,7 @@ function CourseCreate() {
   };
 
   const onSubmit = async (courseData) => {
+    courseData = { ...courseData, userId: id };
     addCourseHandler(courseData);
 
     await addDoc(coursesCollectionRef, {

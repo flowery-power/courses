@@ -1,12 +1,21 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import AuthContext from "../../contexts/AuthContext";
+
 import * as coursesService from "../../services/coursesService";
+import Comments from "../Comments/Comments";
 
 export default function CourseDetails() {
   const navigate = useNavigate();
+
+  const { id, isAuthenticated } = useContext(AuthContext);
+  const initialComments = [
+    { id: 1, text: "This is the first comment" },
+    { id: 2, text: "This is the second comment" },
+  ];
 
   let [course, setCourse] = useState({});
   let { courseId } = useParams();
@@ -31,62 +40,7 @@ export default function CourseDetails() {
     }
   };
 
-  // const onPetButtonClickHandler = () => {
-  //   let incrementedLikes = pet.likes + 1;
-
-  //   coursesService
-  //     .pet(match.params.petId, incrementedLikes)
-  //     .then((updatedPet) => {
-  //       setPet((state) => ({
-  //         ...state,
-  //         likes: Number(updatedPet.likes),
-  //       }));
-  //     });
-  // };
-
-  // const courseDeleteHandler = () => {
-  //
-
   return (
-    // <section id="course-details">
-    //   <h1> Details</h1>
-    //   <div className="info-section">
-    //     <div className="course-header">
-    //       <img className="course-img" src={course.imageUrl} />
-    //       <h1>{course.title}</h1>
-    //       <span className="levels">price: {course.price}</span>
-    //       <p className="type">{course.category}</p>
-    //     </div>
-    //   </div>
-
-    //   <p className="text">{course.summary}</p>
-
-    //   <div className="details-comments">
-    //     <h2>Details</h2>
-    //     <p>{course.details}</p>
-
-    //     <p className="no-comment">No comments.</p>
-    //   </div>
-
-    //   <div className="buttons">
-    //     <Link to={`/courses/details/${course.id}/edit`}>
-    //       <button className="button">Edit</button>
-    //     </Link>
-    //     <Link to="#">
-    //       <button onClick={handleDel} className="button">
-    //         Delete
-    //       </button>
-    //     </Link>
-    //   </div>
-    //   <article className="create-comment">
-    //     <label>Add new comment:</label>
-    //     <form className="form">
-    //       <textarea name="comment" placeholder="Comment......"></textarea>
-    //       <input className="btn submit" type="submit" value="Add Comment" />
-    //     </form>
-    //   </article>
-    // </section>
-
     <main id="main">
       <div className="breadcrumbs" data-aos="fade-in">
         <div className="container">
@@ -105,7 +59,7 @@ export default function CourseDetails() {
             </div>
             <div className="col-lg-4">
               <div className="course-info d-flex justify-content-between align-items-center">
-                <h5>Categoty</h5>
+                <h5>Category</h5>
                 <p>{course.type}</p>
               </div>
 
@@ -141,35 +95,26 @@ export default function CourseDetails() {
                       <img src="" alt="" className="img-fluid" />
                     </div>
                     <div>
-                      <div className="buttons">
-                        <Link
-                          to={`/courses/${courseId}/edit`}
-                          className="myButton"
-                        >
-                          Edit
-                        </Link>
-                        <Link to="#">
-                          {" "}
-                          <button onClick={handleDel} className="myButton">
-                            Delete{" "}
-                          </button>{" "}
-                        </Link>{" "}
-                      </div>{" "}
-                      <article className="create-comment">
-                        <label>Add new comment:</label>{" "}
-                        <form className="form">
-                          {" "}
-                          <textarea
-                            name="comment"
-                            placeholder="Comment......"
-                          ></textarea>{" "}
-                          <input
+                      {id === course.userId && isAuthenticated && (
+                        <div className="buttons">
+                          <Link
+                            to={`/courses/${courseId}/edit`}
                             className="myButton"
-                            type="submit"
-                            value="Add Comment"
-                          />{" "}
-                        </form>{" "}
-                      </article>
+                          >
+                            Edit
+                          </Link>
+                          <Link to="#">
+                            <button onClick={handleDel} className="myButton">
+                              Delete
+                            </button>
+                          </Link>
+                        </div>
+                      )}
+
+                      <Comments
+                        comments={initialComments}
+                        isAuthenticated={isAuthenticated}
+                      />
                     </div>
                   </div>
                 </div>
