@@ -3,6 +3,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import * as coursesService from "../../services/coursesService";
 
 import AuthContext from "../../contexts/AuthContext";
 
@@ -18,7 +19,6 @@ function CourseCreate() {
     formState: { errors },
   } = useForm();
 
-  const coursesCollectionRef = collection(db, "courses");
   let navigate = useNavigate();
   const addCourseHandler = (courseData) => {
     setCourses((state) => [
@@ -33,13 +33,9 @@ function CourseCreate() {
   };
 
   const onSubmit = async (courseData) => {
-    courseData = { ...courseData, userId: id };
     addCourseHandler(courseData);
 
-    await addDoc(coursesCollectionRef, {
-      ...courseData,
-      // lector: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
-    });
+    await coursesService.create(courseData, id);
   };
 
   useEffect(() => {

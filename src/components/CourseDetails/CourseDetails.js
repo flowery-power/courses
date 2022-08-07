@@ -7,20 +7,17 @@ import AuthContext from "../../contexts/AuthContext";
 
 import * as coursesService from "../../services/coursesService";
 import Comments from "../Comments/Comments";
+import { CommentContext } from "../../contexts/CommentContext";
 
 export default function CourseDetails() {
   const navigate = useNavigate();
+  const { addComment, removeComment, commentsLoaded, commentsState } =
+    useContext(CommentContext);
 
   const { id, isAuthenticated } = useContext(AuthContext);
-  const initialComments = [
-    { id: 1, text: "This is the first comment" },
-    { id: 2, text: "This is the second comment" },
-  ];
 
   let [course, setCourse] = useState({});
   let { courseId } = useParams();
-
-  // const currentCourse = selectCourse(courseId);
 
   useEffect(() => {
     coursesService.getOne(courseId).then((res) => {
@@ -52,7 +49,7 @@ export default function CourseDetails() {
       <section id="course-details" className="course-details">
         <div className="container" data-aos="fade-up">
           <div className="row">
-            <div className="col-lg-8">
+            <div className="col-lg-6">
               <img src={course.img} className="img-fluid" alt="" />
               <h3>{course.title}</h3>
               <p>{course.details}</p>
@@ -77,6 +74,28 @@ export default function CourseDetails() {
                 <h5>Duration</h5>
                 <p>{course.duration}</p>
               </div>
+
+              <div className="mb-5">
+                {id === course.userId && isAuthenticated && (
+                  <div className="buttons">
+                    <Link to={`/courses/${courseId}/edit`} className="myButton">
+                      Edit
+                    </Link>
+                    <Link to="#">
+                      <button onClick={handleDel} className="myButton">
+                        Delete
+                      </button>
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <Comments
+                isAuthenticated={isAuthenticated}
+                addComment={addComment}
+                removeComment={removeComment}
+                commentsLoaded={commentsLoaded}
+                state={commentsState}
+              />
             </div>
           </div>
         </div>
@@ -93,28 +112,6 @@ export default function CourseDetails() {
                     <div className="col-lg-8 details order-2 order-lg-1"></div>
                     <div className="col-lg-4 text-center order-1 order-lg-2">
                       <img src="" alt="" className="img-fluid" />
-                    </div>
-                    <div>
-                      {id === course.userId && isAuthenticated && (
-                        <div className="buttons">
-                          <Link
-                            to={`/courses/${courseId}/edit`}
-                            className="myButton"
-                          >
-                            Edit
-                          </Link>
-                          <Link to="#">
-                            <button onClick={handleDel} className="myButton">
-                              Delete
-                            </button>
-                          </Link>
-                        </div>
-                      )}
-
-                      <Comments
-                        comments={initialComments}
-                        isAuthenticated={isAuthenticated}
-                      />
                     </div>
                   </div>
                 </div>

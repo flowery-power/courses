@@ -1,0 +1,32 @@
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form textarea {
+  height: 80px;
+  width: 220px;
+}
+
+.myButton {
+  margin-left: 16px;
+}
+
+h5 {
+  padding-top: 24px;
+}
+
+.comment {
+  font-weight: normal;
+}
+
+.comment__delete-btn {
+  color: red;
+}
+
+.comment__text {
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 6px;
+}
