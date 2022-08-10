@@ -1,15 +1,13 @@
 import { NavLink, Link } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 
 import AuthContext from "../../contexts/AuthContext";
 
 function Header() {
   let activeClassName = "active";
   const { isAuthenticated, email } = useContext(AuthContext);
-
-  let logout = () => {};
 
   let guestNavigation = (
     <>
@@ -34,14 +32,6 @@ function Header() {
 
   let userNavigation = (
     <>
-      <li>
-        <NavLink
-          to="findYourCourse"
-          className={({ isActive }) => (isActive ? activeClassName : undefined)}
-        >
-          Events
-        </NavLink>
-      </li>
       <li>
         <NavLink
           to="all-courses"
@@ -84,19 +74,17 @@ function Header() {
           </Link>
         )}
 
-        {/* <a href="courses.html" className="get-started-btn">
-          Register for free
-        </a> */}
-
-        <Nav>
-          <NavDropdown title={email}>
-            <NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/logout">
-                logout
+        {isAuthenticated && (
+          <Nav>
+            <NavDropdown title={email}>
+              <NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/logout">
+                  logout
+                </NavDropdown.Item>
               </NavDropdown.Item>
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
+            </NavDropdown>
+          </Nav>
+        )}
       </div>
     </header>
   );

@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { addDoc, collection } from "firebase/firestore";
-import { db, auth } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as coursesService from "../../services/coursesService";
@@ -10,14 +8,10 @@ import AuthContext from "../../contexts/AuthContext";
 import uniqid from "uniqid";
 
 function CourseCreate() {
-  const [courses, setCourses] = useState("");
-  const { isAuthenticated, email, id } = useContext(AuthContext);
+  const [, setCourses] = useState("");
+  const { isAuthenticated, id } = useContext(AuthContext);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   let navigate = useNavigate();
   const addCourseHandler = (courseData) => {
@@ -42,14 +36,14 @@ function CourseCreate() {
     if (!isAuthenticated) {
       navigate("/login");
     }
-  }, []);
+  }, [isAuthenticated, navigate]);
 
   return (
     <>
       <section id="contact" className="contact">
         <div className="col-lg-8 mt-5 mt-lg-0">
           <form className="php-email-form" onSubmit={handleSubmit(onSubmit)}>
-            <h1>Create A Course</h1>
+            <h1 className="row justify-content-center">Create A Course</h1>
             <div className="row justify-content-center">
               <div className="col-md-6 form-group">
                 <label>Course Title:</label>

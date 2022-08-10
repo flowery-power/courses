@@ -1,20 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./Comments.css";
+import * as commentService from "../../services/commentService.js";
 
 const Comments = ({
   isAuthenticated,
   addComment,
   removeComment,
   commentsLoaded,
+  courseId,
   state,
+  setComments,
 }) => {
   const [comment, setComment] = useState([]);
+
+  useEffect(() => {
+    commentService.getByCourseId(courseId).then((comments) => {
+      setComments(comments || []);
+    });
+  }, [courseId, setComments]);
 
   const handleSumbit = (ev) => {
     ev.preventDefault();
 
-    addComment(comment);
+    commentService.create(courseId, { text: comment }).then((docRef) => {
+      addComment({ id: docRef.id, text: comment });
+    });
+  };
+
+  const handleRemove = (ev, commentId) => {
+    ev.preventDefault();
+    commentService.remove(courseId, commentId).then(() => {
+      removeComment(commentId);
+    });
   };
 
   const handleChange = (ev) => {
@@ -69,7 +87,7 @@ const Comments = ({
               <div className="comment__text">{commentItem.text}</div>
               <div
                 className="comment__delete-btn"
-                onClick={() => removeComment(commentItem.id)}
+                onClick={(event) => handleRemove(event, commentItem.id)}
               >
                 Delete
               </div>

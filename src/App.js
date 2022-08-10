@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import Register from "./components/Register/Register";
 import AllCourses from "./components/AllCourses/AllCourses";
 import Home from "./components/Home";
-import Events from "./components/Events";
 import SignIn from "./components/SignIn/SignIn";
 import { Route, Routes } from "react-router-dom";
 import { auth } from "./firebase-config";
@@ -40,7 +39,6 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/all-courses" element={<AllCourses />} />
             <Route path="/create" element={<CourseCreate />} />
-            <Route path="/findYourCourse" element={<Events />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/login" element={<SignIn />} />
 

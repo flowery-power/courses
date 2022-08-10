@@ -5,19 +5,19 @@ export const CommentContext = createContext();
 function commentReducer(state, action) {
   switch (action.type) {
     case "COMMENTS_LOADED":
-      return { showComments: true, comments: [] };
+      return { showComments: true, comments: state.comments };
     case "SET_COMMENTS":
-      return { showComments: state.showComments, comments: state.comments };
+      return { showComments: state.showComments, comments: action.comments };
     case "ADD_COMMENT":
       const comments = [...state.comments];
       comments.push({
-        id: state.comments[state.comments.length - 1].id + 1,
-        text: action.payload,
+        id: action.comment.id,
+        text: action.comment.text,
       });
-      return { showComments: true, comments: comments };
+      return { showComments: true, comments };
     case "REMOVE_COMMENT":
       const commentsWithoutDeleted = state.comments.filter(
-        (comment) => comment.id != action.payload
+        (comment) => comment.id !== action.commentId
       );
 
       return { showComments: true, comments: commentsWithoutDeleted };
@@ -32,11 +32,10 @@ export const CommentProvider = ({ children }) => {
     comments: [],
   });
 
-  const addComment = (commentId, comment) => {
+  const addComment = (comment) => {
     dispatch({
       type: "ADD_COMMENT",
-      payload: comment,
-      commentId,
+      comment,
     });
   };
 

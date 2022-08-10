@@ -11,8 +11,13 @@ import { CommentContext } from "../../contexts/CommentContext";
 
 export default function CourseDetails() {
   const navigate = useNavigate();
-  const { addComment, removeComment, commentsLoaded, commentsState } =
-    useContext(CommentContext);
+  const {
+    addComment,
+    removeComment,
+    commentsLoaded,
+    commentsState,
+    setComments,
+  } = useContext(CommentContext);
 
   const { id, isAuthenticated } = useContext(AuthContext);
 
@@ -95,6 +100,8 @@ export default function CourseDetails() {
                 removeComment={removeComment}
                 commentsLoaded={commentsLoaded}
                 state={commentsState}
+                courseId={courseId}
+                setComments={setComments}
               />
             </div>
           </div>
