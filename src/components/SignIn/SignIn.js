@@ -4,12 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
+import "./SingIn.css";
+
 const SignIn = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
 
   const onLoginFormSubmitHandler = ({ email, password }) => {

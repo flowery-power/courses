@@ -77,10 +77,8 @@ function Header() {
         {isAuthenticated && (
           <Nav>
             <NavDropdown title={email}>
-              <NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/logout">
-                  logout
-                </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/logout">
+                logout
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
