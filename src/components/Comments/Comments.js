@@ -18,7 +18,7 @@ const Comments = ({
     commentService.getByCourseId(courseId).then((comments) => {
       setComments(comments || []);
     });
-  }, [courseId, setComments]);
+  }, []);
 
   const handleSumbit = (ev) => {
     ev.preventDefault();

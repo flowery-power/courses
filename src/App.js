@@ -47,11 +47,6 @@ function App() {
               element={<CourseDetails />}
             />
             <Route path="/courses/:courseId/edit" element={<CourseEdit />} />
-            {/* <Route path="/courses/details/edit" exact element={<CourseEdit />} /> */}
-
-            {/*
-        <Route path="/pets/create" component={CreatePet} />
-        <Route path="/pets/:petId/edit" component={EditPet} /> */}
 
             <Route path="/logout" element={<Logout />} />
           </Routes>
