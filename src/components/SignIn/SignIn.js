@@ -17,7 +17,7 @@ const SignIn = () => {
   };
 
   return (
-    <section id="contact" className="contact">
+    <section id="sign-in" className="contact">
       <div className="container" data-aos="fade-up">
         <div className="col-lg-8 mt-5 mt-lg-0">
           <form

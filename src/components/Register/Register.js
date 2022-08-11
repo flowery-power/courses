@@ -3,12 +3,10 @@ import { auth } from "../../firebase-config";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+import "./Register.css";
+
 function Register() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   let navigate = useNavigate();
 
   const onRegisterFormSubmitHandler = ({ email, password, repeatPassword }) => {
@@ -17,9 +15,8 @@ function Register() {
     }
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(() => {
         // Signed in
-        const user = userCredential.user;
         navigate("/");
       })
       .catch((error) => {
@@ -30,7 +27,7 @@ function Register() {
   };
 
   return (
-    <section id="contact" className="contact">
+    <section id="register" className="contact">
       <div className="col-lg-8 mt-5 mt-lg-0">
         <form
           className="php-email-form"
