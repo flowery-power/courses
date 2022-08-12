@@ -29,13 +29,13 @@ Delete a comment.
 * Boostrap v4
 
 ### The project app uses 3-rd party packages:
-•	react-router-dom
-•	react-firebase-hooks
-•	react-hook-form
-•	firebase-tools
-•	react-bootstrap-validation
-•	uniqid
-•	web-vitals
-•	react-dom
+*	react-router-dom
+*	react-firebase-hooks
+*	react-hook-form
+*	firebase-tools
+*	react-bootstrap-validation
+*	uniqid
+*	web-vitals
+*	react-dom
 
 
