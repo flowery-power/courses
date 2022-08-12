@@ -1,10 +1,12 @@
-import { doc, getDoc, deleteDoc, updateDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  addDoc,
+  collection,
+} from "firebase/firestore";
 import { db } from "../firebase-config";
-import { addDoc, collection } from "firebase/firestore";
-
-import { createContext } from "react";
-
-export const CourseContext = createContext();
 
 export const getOne = async (courseId) => {
   const docRef = doc(db, "courses", courseId);

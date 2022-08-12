@@ -26,6 +26,6 @@ export const getByCourseId = async (courseId) => {
 
   return comments.docs.map((comment) => ({
     id: comment.id,
-    ...comment.data(),
+    ...comment.data().comment,
   }));
 };

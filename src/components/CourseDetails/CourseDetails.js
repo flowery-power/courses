@@ -28,7 +28,7 @@ export default function CourseDetails() {
     coursesService.getOne(courseId).then((res) => {
       setCourse(res);
     });
-  });
+  }, []);
 
   const handleDel = () => {
     const confirmation = window.confirm(
