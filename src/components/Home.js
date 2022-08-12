@@ -1,5 +1,4 @@
 import Courses from "./Courses/Courses";
-import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 
 import React, { useEffect, useState } from "react";
