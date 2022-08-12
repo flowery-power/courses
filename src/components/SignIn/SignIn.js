@@ -11,7 +11,7 @@ const SignIn = () => {
   let navigate = useNavigate();
 
   const onLoginFormSubmitHandler = ({ email, password }) => {
-    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+    signInWithEmailAndPassword(auth, email, password).then(() => {
       navigate("/");
     });
   };

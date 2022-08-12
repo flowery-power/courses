@@ -8,7 +8,7 @@ import AuthContext from "../../contexts/AuthContext";
 import uniqid from "uniqid";
 
 function CourseCreate() {
-  const [, setCourses] = useState("");
+  const [courses, setCourses] = useState("");
   const { isAuthenticated, id } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
