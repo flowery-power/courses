@@ -1,6 +1,4 @@
 
-## Betterdegree
-
 ## Betterdegree-Project-ReactJS-Final
 
 ## Welcome to Betterdegree!
